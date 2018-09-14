@@ -1,16 +1,17 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    
+
     def __str__(self): #Definiujemy funkcje, która zwraca tytuł wpisu
         return self.title
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
