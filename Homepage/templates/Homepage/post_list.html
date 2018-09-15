@@ -3,7 +3,7 @@
 {% block content %}
   {% for post in posts %}
       <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-      <h6>Kategoria: {{ post.category }}</h6>
+      <h6>Kategoria: {{ post.category }} | Autor: {{ post.author }}</h6>
       <p>{{ post.description|linebreaksbr|truncatechars:30 }}</p>
       {% endfor %}
 {% endblock %}
