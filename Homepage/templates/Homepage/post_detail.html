@@ -2,8 +2,9 @@
 
 {% block content %}
       <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-      <h6>Kategoria: {{ post.category }}</h6>
+      <h6>Kategoria: {{ post.category }} | Autor: {{ post.author }} | {{ post.published_date }}</h6>
       <p>{{ post.description|linebreaksbr }}</p>
+      <p><hr>{{ post.author.userprofile.signature }}</p>
 {% endblock %}
 </body>
 </html>

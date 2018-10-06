@@ -13,5 +13,5 @@ class SignUp(generic.CreateView):
 
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
-    userprofile = user.user
+    userprofile = user.userprofile
     return render(request, 'accounts/user_detail.html', {'userprofile': userprofile})

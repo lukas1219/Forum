@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     website = models.URLField(default='', blank=True)
     city = models.CharField(max_length=100, default='', blank=True)
     signature = models.TextField(default='', blank=True)

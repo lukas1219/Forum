@@ -9,9 +9,10 @@
 <body>
   {% if user.is_authenticated %}
     <p>Hi {{ user.username }}!</p>
+    <p><a href="{% url 'post_list' %}">Post list <span class="glyphicon glyphicon-home"></span></a></p>
     <p><a href="{% url 'logout' %}">Logout <span class="glyphicon glyphicon-off"></span></a></p>
-    <p><a href="{% url 'accounts:user_detail' pk=user.pk %}">Edytuj profil<span class="glyphicon glyphicon-user"></span></a></p>
-    <p><a href="">Dodaj post <span class="glyphicon glyphicon-plus"></span></a></p>
+    <p><a href="{% url 'accounts:user_detail' pk=user.pk %}">My profile<span class="glyphicon glyphicon-user"></span></a></p>
+    <p><a href="{% url 'post_new' %}">Add post <span class="glyphicon glyphicon-plus"></span></a></p>
   {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Login</a> or <a href="{% url 'accounts:signup' %}">Register</a>
