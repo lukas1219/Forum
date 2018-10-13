@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if user.is_authenticated %}
+<p><a href="">Edit profile <span class="glyphicon glyphicon-pencil"></span></a></p>
 <p>Your nickname: <b>{{ user.username }}</b></p>
 <p>Your first name: <b>{{ user.first_name }}</b></p>
 <p>Your last name: <b>{{ user.last_name }}</b></p>
@@ -7,4 +9,8 @@
 <p>Your website: <b>{{ userprofile.website }}</b></p>
 <p>Your city: <b>{{ userprofile.city }}</b></p>
 <p>Your signature: <b>{{ userprofile.signature }}</b></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Login</a> or <a href="{% url 'accounts:signup' %}">Register</a>
+{% endif %}
 {% endblock %}

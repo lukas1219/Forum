@@ -1,7 +1,12 @@
 {% extends 'Homepage/base.html' %}
 
 {% block content %}
-      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+      <h1>
+        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+        {% if user.is_authenticated and user == post.author %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+      </h1>
       <h6>Kategoria: {{ post.category }} | Autor: {{ post.author }} | {{ post.published_date }}</h6>
       <p>{{ post.description|linebreaksbr }}</p>
       <p><hr>{{ post.author.userprofile.signature }}</p>
