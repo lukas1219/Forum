@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-<p><a href="">Edit profile <span class="glyphicon glyphicon-pencil"></span></a></p>
+<p><a href="{% url 'accounts:user_edit' pk=user.pk %}">Edit profile <span class="glyphicon glyphicon-pencil"></span></a></p>
 <p>Your nickname: <b>{{ user.username }}</b></p>
 <p>Your first name: <b>{{ user.first_name }}</b></p>
 <p>Your last name: <b>{{ user.last_name }}</b></p>
