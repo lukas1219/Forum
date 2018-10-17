@@ -2,7 +2,7 @@
 My first project in Python Django
 The forum has only basics functions:
 - Login and registration
-- Post list on the home page - each post has its own category
+- Posts list on the home page - each post has its own category
 - Simple user panel - you can change your password and see your posts list from there
 - You can add an answer to someone's question
 
