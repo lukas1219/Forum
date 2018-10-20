@@ -6,10 +6,27 @@
         {% if user.is_authenticated and user == post.author %}
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
+        {% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'add_answer' pk=post.pk %}">Add answer</a>
+        {% endif %}
       </h1>
       <h6>Kategoria: {{ post.category }} | Autor: {{ post.author }} | {{ post.published_date }}</h6>
       <p>{{ post.description|linebreaksbr }}</p>
       <p><hr>{{ post.author.userprofile.signature }}</p>
+
+
+{% for answer in post.answers.all %}
+<table class="table">
+  <tr class="info">
+    <td>{{ answer.author }}</td>
+    <td><strong>{{ answer.published_date }}</strong></td>
+  </tr>
+    <tr class="info">
+    <td colspan="2">{{ answer.text|linebreaks }}</td>
+</tr></table>
+{% empty %}
+    <p align="center">No answers here yet :(</p>
+{% endfor %}
 {% endblock %}
 </body>
 </html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Category
 from django.utils import timezone
-from .forms import PostForm
+from .forms import PostForm, AnswerForm
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
@@ -36,3 +36,17 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'Homepage/post_edit.html', {'form': form})
+
+def add_answer(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.author = request.user
+            answer.post = post
+            answer.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = AnswerForm()
+    return render(request, 'Homepage/add_answer.html', {'form': form})
