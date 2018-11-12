@@ -3,9 +3,9 @@ from .models import Post, Category
 from django.utils import timezone
 from .forms import PostForm, AnswerForm
 
-def post_list(request):
+def posts_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'Homepage/post_list.html', {'posts': posts})
+    return render(request, 'Homepage/posts_list.html', {'posts': posts})
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'Homepage/post_detail.html', {'post': post})

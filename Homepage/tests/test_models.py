@@ -11,7 +11,12 @@ class PostModelTest(TestCase):
         cls.category = Category.objects.create(title="Testowa")
         cls.category.save()
         username = cls.user.username
-        Post.objects.create(title="Post title", description="Some content here", author=cls.user, category=cls.category)
+        Post.objects.create(
+        title="Post title",
+        description="Some content here",
+        author=cls.user,
+        category=cls.category,
+        )
     def test_post_title_label(self):
         post = Post.objects.get(id=1)
         field_label = post._meta.get_field('title').verbose_name
