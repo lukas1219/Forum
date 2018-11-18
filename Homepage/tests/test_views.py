@@ -11,7 +11,7 @@ class PostListViewTest(TestCase):
         cls.user.save()
         cls.category = Category.objects.create(title="Testowa")
         cls.category.save()
-        number_od_posts = 7
+        number_od_posts = 12
 
         for post_pk in range(number_od_posts):
             Post.objects.create(
@@ -24,9 +24,12 @@ class PostListViewTest(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
     def test_view_url_is_accessible_by_name(self):
-            response = self.client.get(reverse('posts_list'))
-            self.assertEqual(response.status_code, 200)
+        response = self.client.get(reverse('posts_list'))
+        self.assertEqual(response.status_code, 200)
     def test_view_uses_correct_template(self):
         response = self.client.get(reverse('posts_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'Homepage/posts_list.html')
+    def test_pagination_is_ten(self):
+        response = self.client.get(reverse('posts_list'))
+        self.assertTrue(len(response.context['posts']) == 10)
