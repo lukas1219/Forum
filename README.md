@@ -12,7 +12,7 @@ The forum has only basics functions:
 - mysqlclient 1.3.12
 - pip 18.0
 
-**Installation**
+# Installation
 
 1.Install Forum using this command
 ```
