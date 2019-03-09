@@ -13,6 +13,7 @@ The forum has only basics functions:
 - pip 18.0
 
 **Installation**
+
 1.Install Forum using this command
 ```
 git clone https://github.com/Incybro/Forum.git
