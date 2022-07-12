@@ -7,7 +7,7 @@ class Category(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
 
-    def __str__(self): #Definiujemy funkcje, która zwraca tytuł wpisu
+    def __str__(self): 
         return self.title
 
 class Post(models.Model):
@@ -19,7 +19,7 @@ class Post(models.Model):
     updated = models.DateTimeField(blank=True, null=True)
     views = models.IntegerField(default=0)
 
-    def __str__(self): #Definiujemy funkcje, która zwraca tytuł wpisu
+    def __str__(self): 
         return self.title
 
 class Answer(models.Model):
